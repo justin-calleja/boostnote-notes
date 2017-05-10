@@ -1,0 +1,29 @@
+type: "MARKDOWN_NOTE"
+folder: "aeb3b2d6228856ab2b9d"
+title: "Type Html needs an argument - the type the Html produces e.g. Html Msg."
+content: '''
+  Type `Html` needs an argument - the type the Html produces e.g. `Html Msg`.
+  
+  ---
+  
+  `update` : `Msg` -> `Model` -> `Model`
+  
+  `view` : `Model` -> `Html Msg`
+  
+  ---
+  
+  ```elm
+  type Sorting
+      = Ascending String
+      | Descending String
+      | Randomized
+  ```
+  
+  `Sorting` is a type.
+  `Ascending` and `Descending` are functions. (`String -> Sorting`)
+  `Randomized` is a constant.
+'''
+tags: []
+isStarred: false
+createdAt: "2017-05-10T10:12:17.540Z"
+updatedAt: "2017-05-10T10:51:10.687Z"

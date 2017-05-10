@@ -1,0 +1,87 @@
+type: "SNIPPET_NOTE"
+folder: "electron"
+title: "Spectron setup examples"
+description: '''
+  Spectron setup examples
+  
+  
+'''
+snippets: [
+  {
+    name: "electron-protractor.js"
+    mode: "JavaScript"
+    content: '''
+      // https://github.com/electron/spectron/issues/164#issuecomment-293557483
+      const Application = require('spectron').Application;
+      const spawn = require('child_process').spawn;
+      const http = require('http');
+      
+      let app = new Application({
+          path: './node_modules/.bin/electron',
+          args: ['.']
+      });
+      
+      app.start().then(() => app.client.sessions()).then(sessions => {
+      
+          const sessionId = sessions.value[0].id;
+      
+          return new Promise(resolve => {
+              const protractor = spawn('protractor', [
+                  'test/e2e/config/protractor-spectron.conf.js',
+                  '--seleniumSessionId=' + sessionId
+              ]);
+              protractor.stdout.setEncoding('utf8');
+              protractor.stdout.on('data', data => console.log(data));
+              protractor.stderr.setEncoding('utf8');
+              protractor.stderr.on('data', data => console.error(data));
+              protractor.on('close', code => resolve(code));
+          });
+      
+      }).then(code => {
+          app.stop().then(() => process.exit(code));
+      });
+      And in test/e2e/config/protractor-spectron.conf.js:
+      
+      seleniumAddress: 'http://localhost:9515/wd/hub',
+      baseUrl: 'file://' + path.resolve(__dirname, '../../..') + '/index.html',
+    '''
+  }
+  {
+    name: "hooks.js"
+    mode: "JavaScript"
+    content: '''
+      // https://github.com/StephenDavidson/electron-spectron-example/blob/master/test/hooks.js
+      var Application = require('spectron').Application;
+      var chai = require('chai');
+      var chaiAsPromised = require('chai-as-promised');
+      var electron = require('electron-prebuilt');
+      
+      global.before(function () {
+          chai.should();
+          chai.use(chaiAsPromised);
+      });
+      
+      beforeEach(function () {
+          this.app = new Application({
+              path: electron,
+              args: ['electron-app']
+          });
+      
+          return this.app.start().then(function (app) {
+              chaiAsPromised.transferPromiseness = app.transferPromiseness;
+              return app
+          })
+      });
+      
+      afterEach(function () {
+          if (this.app && this.app.isRunning()) {
+              return this.app.stop()
+          }
+      });
+    '''
+  }
+]
+tags: []
+isStarred: false
+createdAt: "2017-05-06T09:01:30.242Z"
+updatedAt: "2017-05-06T09:14:46.979Z"

@@ -1,0 +1,25 @@
+type: "MARKDOWN_NOTE"
+folder: "electron"
+title: "Electron related links"
+content: '''
+  # Links
+
+  - https://github.com/maxogden/menubar
+  - https://github.com/sindresorhus/awesome-electron
+  - https://github.com/electron-userland/electron-prebuilt-compile
+  - https://github.com/electron/electron-compile
+  - https://www.npmjs.com/package/electron-osx-appearance
+  - https://www.npmjs.com/package/auto-launch
+  - https://www.npmjs.com/package/electron-sudo
+  - https://www.npmjs.com/package/electron-localshortcut
+  - https://www.npmjs.com/package/babel-preset-electron
+  - https://github.com/hardchor/electron-redux
+  - https://github.com/felixrieseberg/ember-electron
+  - https://electron.atom.io/spectron/
+  - https://github.com/sindresorhus/awesome-electron
+  - https://github.com/maxogden/electron-microscope
+'''
+tags: []
+isStarred: false
+createdAt: "2017-04-24T15:50:15.689Z"
+updatedAt: "2017-04-24T17:34:41.156Z"

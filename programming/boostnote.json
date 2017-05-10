@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "key": "electron",
+      "color": "SkyBlue ",
+      "name": "Electron"
+    },
+    {
+      "key": "css",
+      "color": "#3FD941",
+      "name": "CSS"
+    },
+    {
+      "key": "boostnote",
+      "color": "#E10051",
+      "name": "Boostnote"
+    },
+    {
+      "key": "aeb3b2d6228856ab2b9d",
+      "color": "#30D5C8",
+      "name": "Elm"
+    }
+  ],
+  "version": "1.0"
+}
